@@ -1,31 +1,42 @@
 package cmd
 
 import (
-	"fmt"
+    "fmt"
+    "time"
 
-	"github.com/spf13/cobra"
+    "github.com/spf13/cobra"
 )
 
 // workCmd represents the work command
 var workCmd = &cobra.Command{
-	Use:   "work",
-	Short: "Work timer",
-	Long: `Launcs a timer for work. Defaults its 25 mins`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("work called")
-	},
+    Use:   "work",
+    Short: "Work timer",
+    Long: `Launcs a timer for work. Defaults its 25 mins`,
+    Run: func(cmd *cobra.Command, args []string) {
+        // Read the flags
+        delay_input, _:= cmd.Flags().GetString("time")
+
+        // Set timer
+        delay, _:= time.ParseDuration(delay_input)
+        timerWork := time.NewTimer(delay)
+        // Launch timer
+        <-timerWork.C
+        // Timer Finish
+        fmt.Println(`
+          _______  _______  _          ______   _______  _        _______ 
+|\     /|(  ___  )(  ____ )| \    /\  (  __  \ (  ___  )( (    /|(  ____ \
+| )   ( || (   ) || (    )||  \  / /  | (  \  )| (   ) ||  \  ( || (    \/
+| | _ | || |   | || (____)||  (_/ /   | |   ) || |   | ||   \ | || (__    
+| |( )| || |   | ||     __)|   _ (    | |   | || |   | || (\ \) ||  __)   
+| || || || |   | || (\ (   |  ( \ \   | |   ) || |   | || | \   || (      
+| () () || (___) || ) \ \__|  /  \ \  | (__/  )| (___) || )  \  || (____/\
+(_______)(_______)|/   \__/|_/    \/  (______/ (_______)|/    )_)(_______/
+
+        `)
+    },
 }
 
 func init() {
-	rootCmd.AddCommand(workCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// workCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// workCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+    rootCmd.AddCommand(workCmd)
+    workCmd.Flags().StringP("time", "t", "25m", "Tiempo del timer de trabajo")
 }
