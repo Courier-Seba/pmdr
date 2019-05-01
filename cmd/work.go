@@ -31,8 +31,12 @@ var workCmd = &cobra.Command{
             | () () || (___) || ) \ \__|  /  \ \  | (__/  )| (___) || )  \  || (____/\
             (_______)(_______)|/   \__/|_/    \/  (______/ (_______)|/    )_)(_______/
         `)
-        fmt.Println("Press Ctrl+C to stop it")
-        blocks.SoundPlayer(soundPath)
+        if soundPath != "" {
+            fmt.Println("Press Ctrl+C to stop it")
+            blocks.SoundPlayer(soundPath)
+        } else {
+            fmt.Println(">>No sound specified")
+        }
     },
 }
 
