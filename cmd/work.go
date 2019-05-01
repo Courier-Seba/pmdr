@@ -16,7 +16,9 @@ var workCmd = &cobra.Command{
     Run: func(cmd *cobra.Command, args []string) {
         // Read the flags
         delay_input, _:= cmd.Flags().GetString("time")
+        soundPath, _:= cmd.Flags().GetString("sound")
 
+        // Call timer
         blocks.Timer(delay_input)
         // Timer Finish
         fmt.Println(`
@@ -29,10 +31,13 @@ var workCmd = &cobra.Command{
             | () () || (___) || ) \ \__|  /  \ \  | (__/  )| (___) || )  \  || (____/\
             (_______)(_______)|/   \__/|_/    \/  (______/ (_______)|/    )_)(_______/
         `)
+        fmt.Println("Press Ctrl+C to stop it")
+        blocks.SoundPlayer(soundPath)
     },
 }
 
 func init() {
     rootCmd.AddCommand(workCmd)
     workCmd.Flags().StringP("time", "t", "25m", "Time of work")
+    workCmd.Flags().StringP("sound", "s", "", "Sound to play")
 }
