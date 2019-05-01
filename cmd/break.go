@@ -16,7 +16,9 @@ package cmd
 
 import (
     "fmt"
-    "time"
+
+    "pmdr/cmd/blocks"
+
     "github.com/spf13/cobra"
 )
 
@@ -29,11 +31,7 @@ var breakCmd = &cobra.Command{
         // Read the flags
         delay_input, _:= cmd.Flags().GetString("time")
 
-        // Set timer
-        delay, _:= time.ParseDuration(delay_input)
-        timerBreak:= time.NewTimer(delay)
-        // Launch timer
-        <-timerBreak.C
+        blocks.Timer(delay_input)
         // Timer Finish
         fmt.Println(`
              ____  ____  _____    _    _  __   _____     _______ ____  
