@@ -1,6 +1,15 @@
 # Pmdr
 A simple pomodoro CLI timer writed in go
 
+## Install
+Install Cobra and beep libs for go (https://github.com/spf13/cobra, https://github.com/faiface/beep)
+Make sure gopath is set!
+In repo folder run: 
+```sh
+$ go install
+```
+Now the binaries are in your Go/bin folder.
+_____________________________________________________________________________________________________________
 ## Usage
 
 ### Launch Work Timer
