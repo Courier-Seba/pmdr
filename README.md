@@ -19,3 +19,4 @@ pmdr break
 - -t or --time ==> set the time it will run, default is 25min
 - -s or --sound ==> set an alarm sound/song to play when time finish
 
+> The sound path can only be absolute. If needed u can use a config file.
