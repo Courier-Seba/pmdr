@@ -14,7 +14,7 @@ ________________________________________________________________________________
 
 ### Launch Work Timer
 ```sh
-pmdr work
+$ pmdr work
 ```
 #### Flags
 - -t or --time ==> set the time it will run, default is 25min
@@ -22,10 +22,10 @@ pmdr work
 
 ### Launch Break Timer
 ```sh
-pmdr break
+$ pmdr break
 ```
 #### Flags
-- -t or --time ==> set the time it will run, default is 25min
+- -t or --time ==> set the time it will run, default is 5min
 - -s or --sound ==> set an alarm sound/song to play when time finish
 
 > The sound path can only be absolute. If needed u can use a config file.
